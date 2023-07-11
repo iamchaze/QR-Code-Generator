@@ -19,6 +19,10 @@ inquirer
     const url = answers.URL;
     var qr_svg = qr.image(url);
     qr_svg.pipe(fs.createWriteStream("qrimg.png"));
+    fs.writeFile("./links.txt", url, (err) => {
+      if(err) throw err;
+      console.log('The Link has been added.')
+    } )
   })
   .catch((error) => {
     if (error.isTtyError) {
